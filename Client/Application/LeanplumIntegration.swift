@@ -124,13 +124,13 @@ class LeanplumIntegration {
     // Events
 
     func track(eventName: LeanplumEventName) {
-        if shouldSendToLP() {
+        if !UIApplication.isInPrivateMode && shouldSendToLP() {
             Leanplum.track(eventName.rawValue)
         }
     }
 
     func track(eventName: LeanplumEventName, withParameters parameters: [String: AnyObject]) {
-        if shouldSendToLP() {
+        if !UIApplication.isInPrivateMode && shouldSendToLP() {
             Leanplum.track(eventName.rawValue, withParameters: parameters)
         }
     }
